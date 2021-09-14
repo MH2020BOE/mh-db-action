@@ -1,6 +1,7 @@
 #new Docer file pulling Hello-World from docker.io
-#v4
-FROM docker.io/library/hello-world:latest as build
-#FROM scratch as build
-#COPY hello /
-#CMD ["/hello"]
+#v6
+FROM binarycentral.jfrog.io/docker-dockerhub-remote/hello-world:latest
+
+#adding artifactory credentials
+ARG ARTIFACTORY_USERNAME
+ARG ARTIFACTORY_PASSWORD
