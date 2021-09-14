@@ -1,5 +1,5 @@
 #new Docer file pulling Hello-World from docker.io
-#v6
+#v7
 FROM binarycentral.jfrog.io/docker-dockerhub-remote/hello-world:latest
 
 #adding artifactory credentials
