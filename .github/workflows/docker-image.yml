@@ -3,16 +3,31 @@ name: Docker Image CI
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    tags: 
+      '*'
 
 jobs:
 
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20:10
 
     steps:
     - uses: actions/checkout@v2
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+    - name: Login to Artifactory 
+      uses: docker/login-action@v1
+          with:
+            registry: binarycentral.jfrog.io
+            username: ${{ secrets.ARTIFACTORY_USERNAME }}
+            password: ${{ secrets.ARTIFACTORY_PASSWORD }}    
+    - name: Build and push
+          id: docker_build
+          uses: docker/build-push-action@v2
+          with:
+            push: true
+            context: .
+            build-args: |
+              ARTIFACTORY_USERNAME=${{ secrets.ARTIFACTORY_USERNAME }}
+              ARTIFACTORY_PASSWORD=${{ secrets.ARTIFACTORY_PASSWORD }}
+            file: ${{ github.workspace }}/Dockerfile
+            tags: binarycentral.jfrog.io/docker-apex-non-prod-local/mh-hello-world:v0.1
