@@ -1,4 +1,4 @@
-#new Docer file pulling Hello-World from docker.io
+#new Docker file pulling Hello-World from Artifactory
 #v8
 FROM binarycentral.jfrog.io/docker-dockerhub-remote/hello-world:linux
 
