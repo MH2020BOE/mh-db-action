@@ -27,4 +27,4 @@ jobs:
           ARTIFACTORY_USERNAME=${{ secrets.ARTIFACTORY_USERNAME }}
           ARTIFACTORY_PASSWORD=${{ secrets.ARTIFACTORY_PASSWORD }}
         file: ${{ github.workspace }}/Dockerfile
-        tags: binarycentral.jfrog.io/docker-apex-non-prod-local/mh-hello-world:v0.1
+        tags: binarycentral.jfrog.io/docker-apex-non-prod-local/mh-hello-world:v0.1.2
